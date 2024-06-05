@@ -58,6 +58,7 @@ const TodoList = () => {
     const handleDelete = async (id:string) => {
 
         try{
+          console.log("In handle delete")
             dispatch(removeTodo(id))
         }
         catch(e){

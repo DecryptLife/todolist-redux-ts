@@ -19,6 +19,7 @@ export const createTodo = (newTodo: ITodo) => {
 };
 
 export const updateTodo = (id: ITodo["id"] , partialTodo: ITodo["content"]) => {
+    console.log("In API Call: ", id, partialTodo)
     return fetch(baseURL + `/${id}`, {
         method: "PATCH",
         headers: {

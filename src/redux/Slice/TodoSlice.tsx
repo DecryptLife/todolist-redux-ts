@@ -31,7 +31,7 @@ const addTodo = createAsyncThunk<ITodo, ITodo>(
 )
 
 const editTodo = createAsyncThunk("todos/editTodo",async (payload:ITodo) => {
-
+    console.log("Payload: ", payload)
     const response = await updateTodo(payload.id, payload.content);
 
     console.log(response);
@@ -59,7 +59,8 @@ export const todoSlice = createSlice({
             state.push(action.payload)
         })
         .addCase(removeTodo.fulfilled, (state, action: PayloadAction<string>) => {
-            return state.filter((todo) => todo.id !== action.payload)
+            state.filter((todo) => todo.id !== action.payload)
+            return state
         })
         .addCase(editTodo.fulfilled, (state, action) => {
             const idx = state.findIndex((todo) => todo.id === action.payload.id)
